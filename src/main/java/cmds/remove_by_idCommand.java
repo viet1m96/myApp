@@ -1,5 +1,9 @@
 package cmds;
+import num.Mode;
 import receiver.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class remove_by_idCommand implements Command {
     public remove_by_idCommand() {}
@@ -9,12 +13,7 @@ public class remove_by_idCommand implements Command {
     }
 
     @Override
-    public void execute() {
-
-    }
-
-    @Override
     public void execute(String s) {
-        store.removeByID(s);
+        store.removingByID(Mode.KBOARD, s, new BufferedReader(new InputStreamReader(System.in)));
     }
 }

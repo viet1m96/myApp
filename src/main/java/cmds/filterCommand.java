@@ -1,5 +1,9 @@
 package cmds;
 import receiver.*;
+import num.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class filterCommand implements Command {
     public filterCommand(){}
@@ -9,12 +13,7 @@ public class filterCommand implements Command {
     }
 
     @Override
-    public void execute() {
-
-    }
-
-    @Override
     public void execute(String s) {
-        store.filter(s);
+        store.filtering(Mode.KBOARD, s, new BufferedReader(new InputStreamReader(System.in)));
     }
 }

@@ -1,5 +1,10 @@
 package cmds;
+import num.Mode;
 import receiver.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class printAddressCommand implements Command {
     public printAddressCommand(){}
     private CollectionManager store;
@@ -8,12 +13,7 @@ public class printAddressCommand implements Command {
     }
 
     @Override
-    public void execute() {
-        store.printAll();
-    }
-
-    @Override
     public void execute(String s) {
-
+        store.printingAddress(Mode.KBOARD, s, new BufferedReader(new InputStreamReader(System.in)));
     }
 }

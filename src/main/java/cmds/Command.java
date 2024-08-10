@@ -1,8 +1,8 @@
 package cmds;
 import receiver.*;
+import num.*;
 
 public interface Command {
     void setCollection(CollectionManager store);
-    void execute();
-    void execute(String s);
+    void execute(String str);
 }

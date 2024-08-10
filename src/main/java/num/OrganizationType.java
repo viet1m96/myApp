@@ -1,4 +1,4 @@
-package receiver;
+package num;
 
 public enum OrganizationType {
     PUBLIC,

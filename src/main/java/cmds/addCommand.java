@@ -2,7 +2,10 @@ package cmds;
 
 import receiver.*;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Collection;
+import num.*;
 
 public class addCommand implements Command {
     public addCommand(){}
@@ -12,12 +15,7 @@ public class addCommand implements Command {
     }
 
     @Override
-    public void execute() {
-        store.addFromKeyboard();
-    }
-
-    @Override
     public void execute(String s) {
-
+        store.adding(Mode.KBOARD, s, new BufferedReader(new InputStreamReader(System.in)));
     }
 }

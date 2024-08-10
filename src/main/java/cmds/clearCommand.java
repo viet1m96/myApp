@@ -1,5 +1,9 @@
 package cmds;
 import receiver.*;
+import num.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class clearCommand implements Command{
     public clearCommand(){}
@@ -9,11 +13,7 @@ public class clearCommand implements Command{
     }
 
     @Override
-    public void execute() {
-        store.clearing();
-    }
-    @Override
     public void execute(String s) {
-
+        store.clearing(Mode.KBOARD, s, new BufferedReader(new InputStreamReader(System.in)));
     }
 }

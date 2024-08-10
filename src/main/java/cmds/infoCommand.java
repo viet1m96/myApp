@@ -1,5 +1,9 @@
 package cmds;
+import num.Mode;
 import receiver.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class infoCommand implements Command {
     public infoCommand(){}
@@ -9,12 +13,7 @@ public class infoCommand implements Command {
     }
 
     @Override
-    public void execute() {
-        store.informationOfDS();
-    }
-
-    @Override
     public void execute(String s) {
-
+        store.informationOfDS(Mode.KBOARD, s, new BufferedReader(new InputStreamReader(System.in)));
     }
 }

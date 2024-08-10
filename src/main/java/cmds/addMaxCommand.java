@@ -1,5 +1,9 @@
 package cmds;
 import receiver.*;
+import num.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class addMaxCommand implements Command {
     public addMaxCommand(){}
@@ -9,12 +13,8 @@ public class addMaxCommand implements Command {
     }
 
     @Override
-    public void execute() {
-        store.addIfMax();
-    }
-    @Override
     public void execute(String s) {
-
+        store.addingIfMax(Mode.KBOARD, s, new BufferedReader(new InputStreamReader(System.in)));
     }
 
 }

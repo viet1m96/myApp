@@ -1,5 +1,9 @@
 package cmds;
 import receiver.*;
+import num.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class exitCommand implements Command {
     public exitCommand(){}
@@ -9,12 +13,7 @@ public class exitCommand implements Command {
     }
 
     @Override
-    public void execute() {
-        System.exit(0);// còn thiếu đóng file các kiểu con đà điểu nữa
-    }
-
-    @Override
     public void execute(String s) {
-
+        store.exiting(Mode.KBOARD, s, new BufferedReader(new InputStreamReader(System.in)));
     }
 }

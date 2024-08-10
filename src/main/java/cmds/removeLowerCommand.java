@@ -1,5 +1,9 @@
 package cmds;
+import num.Mode;
 import receiver.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class removeLowerCommand implements Command {
     public removeLowerCommand(){}
@@ -9,12 +13,7 @@ public class removeLowerCommand implements Command {
     }
 
     @Override
-    public void execute() {
-        store.removeLower();
-    }
-
-    @Override
     public void execute(String s) {
-
+        store.removingLower(Mode.KBOARD, s, new BufferedReader(new InputStreamReader(System.in)));
     }
 }

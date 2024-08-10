@@ -1,5 +1,9 @@
 package cmds;
+import num.Mode;
 import receiver.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class saveCommand implements Command {
     public saveCommand(){}
@@ -9,12 +13,7 @@ public class saveCommand implements Command {
     }
 
     @Override
-    public void execute() {
-        store.saveIntoCSV();
-    }
-
-    @Override
     public void execute(String s) {
-
+        store.savingIntoCSV(Mode.KBOARD, s, new BufferedReader(new InputStreamReader(System.in)));
     }
 }

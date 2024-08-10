@@ -7,6 +7,7 @@ import faults.*;
 import java.util.*;
 import cmds.*;
 import receiver.*;
+import num.*;
 
 public class Handle  {
     public  BufferedReader br;
@@ -43,47 +44,50 @@ public class Handle  {
         commandT2.put("filter_starts_with_full_name", new filterCommand());
     }
 
-    void running() throws IOException {
+    public void running() throws IOException {
         store.loadingData();
+        store.init();
         while(true) {
             try {
                 String s = br.readLine();
                 boolean exist = false;
                 if(commandT1.containsKey(s)) {
                     exist = true;
-                    handleCommandT1(s);
+                    handleCommand(s);
                 } else {
                     for(String key : commandT2.keySet()) {
                         if(s.contains(key)) {
-                            exist = true;
-                            handleCommandT2(key, s);
-                            break;
+                            int idx = s.indexOf(' ');
+                            if(idx != -1) {
+                                exist = true;
+                                handleCommand(s);
+                                break;
+                            }
                         }
                     }
                 }
                 if(!exist) throw new CannotRecognizedInput();
-            } catch(IOException e) {
-                System.out.println(e.toString());
-            } catch(CannotRecognizedInput e) {
+            } catch(IOException | CannotRecognizedInput e) {
                 System.out.println(e.toString());
             }
         }
     }
 
-    void handleCommandT1(String s) {
-        Command command = commandT1.get(s);
+    private void handleCommand(String s) {
+        Command command = null;
+        if(commandT1.containsKey(s)) {
+            command = commandT1.get(s);
+        } else {
+            for(String key : commandT2.keySet()) {
+                if(s.contains(key)) {
+                    command = commandT2.get(key);
+                    break;
+                }
+            }
+        }
         command.setCollection(store);
         caller.setCommand(command);
-        caller.callT1();
-    }
-
-    void handleCommandT2(String nameOfCommand, String needExecuting) {
-        Command command = commandT2.get(nameOfCommand);
-        needExecuting = needExecuting.replace(nameOfCommand, "");
-        needExecuting = needExecuting.replaceAll("\\s", "");
-        command.setCollection(store);
-        caller.setCommand(command);
-        caller.callT2(needExecuting);
+        caller.call(s);
     }
 
 }

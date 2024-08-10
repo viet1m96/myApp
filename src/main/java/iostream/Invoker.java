@@ -1,5 +1,6 @@
 package iostream;
 import cmds.*;
+import num.Mode;
 
 public class Invoker {
     private Command command;
@@ -9,8 +10,5 @@ public class Invoker {
     public void setCommand(Command command) {
         this.command = command;
     }
-    public void callT1() {
-        command.execute();
-    }
-    public void callT2(String s) {command.execute(s);}
+    public void call(String s) {command.execute(s);}
 }

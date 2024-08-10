@@ -1,13 +1,14 @@
 package file_processing;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class writeFile {
-    private FileWriter fw;
+    private BufferedWriter fw;
     public writeFile(String fileName) {
         try {
-            fw = new FileWriter(fileName);
+            fw = new BufferedWriter(new FileWriter(fileName));
         } catch (IOException e) {
             System.out.println(e.toString());
         }

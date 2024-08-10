@@ -1,5 +1,7 @@
 package receiver;
 
+import num.OrganizationType;
+
 public class Organization {
     private int id;// mine
     private String name;
