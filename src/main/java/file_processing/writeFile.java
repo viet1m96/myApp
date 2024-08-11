@@ -3,12 +3,13 @@ package file_processing;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 
 public class writeFile {
-    private BufferedWriter fw;
+    private Writer fw;
     public writeFile(String fileName) {
         try {
-            fw = new BufferedWriter(new FileWriter(fileName));
+            fw = new FileWriter(fileName, false);
         } catch (IOException e) {
             System.out.println(e.toString());
         }
@@ -29,6 +30,14 @@ public class writeFile {
             fw.flush();
             //fw.close();
         } catch (IOException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public void shutDown() {
+        try {
+            fw.close();
+        } catch(IOException e) {
             System.out.println(e.toString());
         }
     }

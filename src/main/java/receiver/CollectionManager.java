@@ -91,6 +91,7 @@ public class CollectionManager {
     }
 
     public void exiting(Mode a, String s, BufferedReader br) {
+        writer.shutDown();
         System.exit(0);
     }
 
