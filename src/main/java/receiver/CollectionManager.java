@@ -132,9 +132,9 @@ public class CollectionManager {
     }
 
     public void savingIntoCSV(Mode a, String s, BufferedReader br) {
+        writer.setPointer();
         for (Organization org : collection) {
             writer.writeToCSV(org.packagingToString());
-
         }
         System.out.println("save command was executed successfully.");
     }

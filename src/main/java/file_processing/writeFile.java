@@ -6,15 +6,21 @@ import java.io.IOException;
 import java.io.Writer;
 
 public class writeFile {
-    private Writer fw;
+    private BufferedWriter fw;
+    private String fileName;
+
+    public writeFile(){}
     public writeFile(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void setPointer() {
         try {
-            fw = new FileWriter(fileName, false);
+            fw = new BufferedWriter(new FileWriter(fileName, false));
         } catch (IOException e) {
             System.out.println(e.toString());
         }
     }
-
     public void writeToCSV(String[] org) {
         String text = "";
         for(int i = 0; i < org.length; i++) {
@@ -28,7 +34,6 @@ public class writeFile {
         try {
             fw.write(text);
             fw.flush();
-            //fw.close();
         } catch (IOException e) {
             System.out.println(e.toString());
         }

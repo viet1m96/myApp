@@ -21,9 +21,6 @@ public class readFile {
         try {
             while((line = br.readLine()) != null) {
                 String[] tmp = line.split(splitBy);
-                for(String s : tmp) {
-                    System.out.println(s);
-                }
                 data.add(tmp);
             }
         } catch (IOException e) {
